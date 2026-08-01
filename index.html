@@ -493,6 +493,27 @@ button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
 }
 .form-sent.show{display:block}
 
+/* service checkboxes */
+.field-group{border:0;padding:0;margin:0;display:grid;gap:1.1rem}
+.field-group legend{
+  padding:0;color:var(--forest);
+  font-size:.66rem;font-family:var(--font-mono);letter-spacing:.18em;text-transform:uppercase;
+}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.6rem}
+.check{display:flex;align-items:center;gap:.75rem;cursor:pointer;color:var(--ink);font-size:.98rem}
+.check input{position:absolute;width:1px;height:1px;opacity:0;margin:0}
+.check .box{
+  flex:0 0 auto;width:19px;height:19px;border:1px solid var(--hairline);
+  display:grid;place-items:center;transition:border-color .3s var(--ease-out),background .3s var(--ease-out);
+}
+.check .box svg{width:11px;height:11px;fill:none;stroke:var(--paper);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:18;stroke-dashoffset:18;transition:stroke-dashoffset .3s var(--ease-out)}
+.check input:checked + .box{background:var(--forest);border-color:var(--forest)}
+.check input:checked + .box svg{stroke-dashoffset:0}
+.check:hover .box{border-color:var(--forest)}
+.check input:focus-visible + .box{outline:2px solid var(--forest);outline-offset:2px}
+@media (max-width:520px){.checks{grid-template-columns:1fr}}
+
 /* ============================================================
    Footer
    ============================================================ */
@@ -574,7 +595,7 @@ button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
         <li><a href="#top" data-nav>Home</a></li>
         <li><a href="#services" data-nav>Services</a></li>
         <li><a href="#about" data-nav>About</a></li>
-        <li><a href="#contact" class="nav-cta">Start a project</a></li>
+        <li><a href="#contact" class="nav-cta">Let's have a chat</a></li>
       </ul>
     </nav>
   </div>
@@ -608,7 +629,7 @@ button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
     <div class="hero-side">
       <p class="hero-kicker">Branding · Websites · Social · Marketing</p>
       <p>Canvas is a Guernsey studio built for small and medium businesses. We pair considered design with modern tools, including AI, so you get branding, websites and social media that punch above their budget.</p>
-      <a class="btn" href="#contact"><span>Start a project</span><span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn" href="#contact"><span>Let's have a chat</span><span class="arr" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -626,9 +647,9 @@ button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
 <section class="section" id="contact">
   <div class="wrap contact-grid">
     <div class="contact-head">
-      <p class="tag r">Start a project</p>
-      <h2 class="r r-d1">Let's make your business <em>impossible to ignore.</em></h2>
-      <p class="r r-d2">Tell us where your business is and where you'd like it to be. We'll reply within two working days with honest thoughts, a clear plan and pricing that works for a small business.</p>
+      <p class="tag r">Let's have a chat</p>
+      <h2 class="r r-d1">Let's talk through your <em>goals.</em></h2>
+      <p class="r r-d2">Send us a few details and we'll organise a video call at a time that suits you, to chat about your goals and how Canvas can help. We'll always reply within two working days.</p>
       <div class="contact-details r r-d3">
         <div class="cd"><span class="k">Email</span><a href="mailto:hello@canvas.gg">hello@canvas.gg</a></div>
       </div>
@@ -642,7 +663,7 @@ button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
       </div>
       <div class="field">
         <input type="email" id="f-email" name="email" placeholder=" " autocomplete="email" required>
-        <label for="f-email">Email address</label>
+        <label for="f-email">Contact email</label>
         <span class="bar"></span>
       </div>
       <div class="field">
@@ -650,6 +671,15 @@ button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
         <label for="f-company">Company (optional)</label>
         <span class="bar"></span>
       </div>
+      <fieldset class="field-group r">
+        <legend>What services are you interested in</legend>
+        <div class="checks">
+          <label class="check"><input type="checkbox" name="services" value="Branding"><span class="box"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5 L6 11 L12 3"/></svg></span><span>Branding</span></label>
+          <label class="check"><input type="checkbox" name="services" value="Social media"><span class="box"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5 L6 11 L12 3"/></svg></span><span>Social media</span></label>
+          <label class="check"><input type="checkbox" name="services" value="Website design"><span class="box"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5 L6 11 L12 3"/></svg></span><span>Website design</span></label>
+          <label class="check"><input type="checkbox" name="services" value="Photography"><span class="box"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5 L6 11 L12 3"/></svg></span><span>Photography</span></label>
+        </div>
+      </fieldset>
       <div class="field">
         <textarea id="f-message" name="message" placeholder=" " required></textarea>
         <label for="f-message">Tell us about your business</label>
